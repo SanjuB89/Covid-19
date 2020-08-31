@@ -1,8 +1,59 @@
-.Janma {
+.container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.container-1 {
+  position: relative;
+  text-align: center;
+}
+
+.text-block {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#img1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  text-align: center;
+  height: auto;
+  padding: 100px 100px 100px 100px;
+}
+.rotate-clockwise {
+  animation: clockwiseSpin 10s infinite linear;
+}
+
+@keyframes clockwiseSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#img2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: auto;
+  padding: 100px 100px 100px 100px;
+}
+.rotate-counter-clockwise {
+  animation: antiClockwiseSpin 10s infinite linear;
+}
+
+@keyframes antiClockwiseSpin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
