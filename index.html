@@ -7,7 +7,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <!-- Animate -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -20,27 +24,30 @@
     <title>Covid-19</title>
   </head>
   <body>
-    <div class="container">
-      <div class="container-1">
-        <input
-          type="image"
-          id="img1"
-          src="covid19-2.png"
-          class="rotate-clockwise"
-          alt="Covid Picture"
-        />
-        <div class="text-block">Covid-19<br />Kundali<br /></div>
+    <div id="main-div" class="container">
+      <div id="picture-div">
+        <div class="container-main-img">
+          <input
+            type="image"
+            id="main-img1"
+            src="covid19-img/covid19-2.png"
+            alt="Covid Picture"
+          />
+          <div class="text-block">Covid-19<br />Kundali<br /></div>
+        </div>
+        <div id="btn-div"></div>
       </div>
-      <div class="container-1">
+
+      <!-- <div class="container-2">
         <input
           type="image"
           id="img2"
-          src="covid19-2.png"
+          src="covid19-img/covid19-2.png"
           class="rotate-counter-clockwise"
           alt="Covid Picture"
         />
         <div class="text-block">Covid-19<br />Kundali<br /></div>
-      </div>
+      </div> -->
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
