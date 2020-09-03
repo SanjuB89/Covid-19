@@ -365,7 +365,10 @@ function createButtons() {
 
       function createChart(list) {
         //chart
-
+        const chartElement = document.getElementById("myChart");
+        chartElement.style.background =
+          "linear-gradient(to top, #ccffff 0%, #cc99ff 100%)";
+        chartElement.style.borderRadius = "15px";
         //generate labels
         const labelData = [];
         const valueData = [];
@@ -380,16 +383,14 @@ function createButtons() {
         console.log("from chart" + valueData[0]);
         var ctx = document.getElementById("myChart").getContext("2d");
         var chart = new Chart(ctx, {
-          // The type of chart we want to create
           type: "line",
 
-          // The data for our dataset
           data: {
             labels: labelData,
             datasets: [
               {
-                label: "Total covid cases",
-                backgroundColor: "rgb(255, 99, 132)",
+                label: "Total Covid Cases",
+                backgroundColor: "white", //"rgb(255, 99, 132)",
                 borderColor: "rgb(255, 255, 132)",
                 data: valueData,
               },
