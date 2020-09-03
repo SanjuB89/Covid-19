@@ -220,6 +220,7 @@ function createButtons() {
       let url = "";
       let country = "";
 
+      //here the events kick off based off of what element is clicked
       switch (currentElementId) {
         case "main-img1":
           break;
@@ -229,7 +230,7 @@ function createButtons() {
           url = "https://covid19-backend-2020.herokuapp.com/latest-status";
           axios.get(url).then((response) => {
             covidTable(response.data);
-            createChart(response.data);
+            createChart(response.data, currentElementId);
           });
           break;
         case "menuTitle2":
@@ -266,6 +267,7 @@ function createButtons() {
           axios.get(url).then((response) => {
             covidTable(response.data);
             console.log(response.data);
+            createChart(response.data, currentElementId);
           });
           break;
         case "menuTitle5":
@@ -363,24 +365,40 @@ function createButtons() {
         }
       }
 
-      function createChart(list) {
-        //chart
+      //creating chart on a button click
+      function createChart(list, eventId) {
+        //cosmetic changes
         const chartElement = document.getElementById("myChart");
         chartElement.style.background =
           "linear-gradient(to top, #ccffff 0%, #cc99ff 100%)";
         chartElement.style.borderRadius = "15px";
-        //generate labels
+
+        //generate labels and values from list
         const labelData = [];
         const valueData = [];
         for (let index = 0; index < list.length; index++) {
-          let x_value = list[index].country;
+          let x_value;
+          if (
+            eventId === "menuTitle1" ||
+            eventId === "myOuterDiv1" ||
+            eventId === "subImage1"
+          ) {
+            x_value = list[index].country;
+          } else if (
+            eventId === "menuTitle4" ||
+            eventId === "myOuterDiv4" ||
+            eventId === "subImage4"
+          ) {
+            x_value = list[index].date;
+          } else {
+            x_value = ["not defined"];
+          }
+
           let y_value = list[index].cases;
           labelData.push(x_value);
           valueData.push(y_value);
         }
 
-        console.log("from chart" + labelData[0]);
-        console.log("from chart" + valueData[0]);
         var ctx = document.getElementById("myChart").getContext("2d");
         var chart = new Chart(ctx, {
           type: "line",
@@ -397,14 +415,14 @@ function createButtons() {
             ],
           },
 
-          // Configuration options go here
           options: {},
         });
       }
     }
   } else {
-    console.log("I am here");
+    // console.log("children count not equals to 1");
 
+    //animate disapperance of menus on button click
     document.getElementById("menu1").removeAttribute("class", "slide1");
     document.getElementById("menu1").setAttribute("class", "slide1-reverse");
 
@@ -420,8 +438,10 @@ function createButtons() {
     document.getElementById("menu5").removeAttribute("class", "slide5");
     document.getElementById("menu5").setAttribute("class", "slide5-reverse");
 
+    //set timer before refreshing the page
     setTimeout(reloadPage, 500);
 
+    //refresh page
     function reloadPage() {
       location.reload(true);
     }
