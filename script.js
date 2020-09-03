@@ -9,7 +9,7 @@ function createButtons() {
   const myOuterDiv5 = document.createElement("div");
   if (target.childElementCount === 1) {
     // create button
-    console.log("inside if");
+    //console.log("inside if");
     myOuterDiv1.style.display = "flex";
     myOuterDiv1.setAttribute("id", "menu1");
     myOuterDiv1.style.width = "10rem";
@@ -126,7 +126,7 @@ function createButtons() {
     menuTitle4.innerHTML = "Prediction By country";
     menuTitle4.position = "absolute";
     myOuterDiv4.appendChild(menuTitle4);
-    console.log(document.getElementById("main-div").children);
+    //console.log(document.getElementById("main-div").children);
 
     //create button
     myOuterDiv5.style.display = "flex";
@@ -156,7 +156,7 @@ function createButtons() {
     menuTitle5.innerHTML = "Timeline by Country";
     menuTitle5.position = "absolute";
     myOuterDiv5.appendChild(menuTitle5);
-    console.log(document.getElementById("main-div").children);
+    //console.log(document.getElementById("main-div").children);
 
     // clicking sub-menus
     myOuterDiv1.addEventListener("click", openDisplay);
@@ -254,7 +254,7 @@ function createButtons() {
           url = `https://covid19-backend-2020.herokuapp.com/difference-by-country/${country}`;
           axios.get(url).then((response) => {
             covidTable([response.data]);
-            console.log(response.data);
+            //console.log(response.data);
           });
           break;
         case "menuTitle4":
@@ -266,7 +266,7 @@ function createButtons() {
           url = `https://covid19-backend-2020.herokuapp.com/prediction-by-country/${country}`;
           axios.get(url).then((response) => {
             covidTable(response.data);
-            console.log(response.data);
+            //console.log(response.data);
             createChart(response.data, currentElementId);
           });
           break;
@@ -279,7 +279,7 @@ function createButtons() {
           url = `https://covid19-backend-2020.herokuapp.com/timeline-by-country/${country}`;
           axios.get(url).then((response) => {
             covidTable([response.data]);
-            console.log(response.data);
+            //console.log(response.data);
           });
           break;
       }
@@ -351,10 +351,10 @@ function createButtons() {
           thNum.innerHTML = `${i + 1}`;
           bRow.appendChild(thNum);
           //console.log("outside for");
-          console.log(Object.keys(list[i]).length);
+          // console.log(Object.keys(list[i]).length);
 
           const valueList = Object.values(list[i]);
-          console.log(valueList);
+          //console.log(valueList);
           for (let j = 0; j < valueList.length; j++) {
             const tdData = document.createElement("td");
             tdData.setAttribute("scope", "col");
@@ -369,6 +369,7 @@ function createButtons() {
       function createChart(list, eventId) {
         //cosmetic changes
         const chartElement = document.getElementById("myChart");
+        chartElement.innerHTML = "";
         chartElement.style.background =
           "linear-gradient(to top, #ccffff 0%, #cc99ff 100%)";
         chartElement.style.borderRadius = "15px";
@@ -390,8 +391,6 @@ function createButtons() {
             eventId === "subImage4"
           ) {
             x_value = list[index].date;
-          } else {
-            x_value = ["not defined"];
           }
 
           let y_value = list[index].cases;
