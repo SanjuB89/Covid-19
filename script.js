@@ -229,6 +229,7 @@ function createButtons() {
           url = "https://covid19-backend-2020.herokuapp.com/latest-status";
           axios.get(url).then((response) => {
             covidTable(response.data);
+            createChart(response.data);
           });
           break;
         case "menuTitle2":
@@ -360,6 +361,44 @@ function createButtons() {
             bRow.appendChild(tdData);
           }
         }
+      }
+
+      function createChart(list) {
+        //chart
+
+        //generate labels
+        const labelData = [];
+        const valueData = [];
+        for (let index = 0; index < list.length; index++) {
+          let x_value = list[index].country;
+          let y_value = list[index].cases;
+          labelData.push(x_value);
+          valueData.push(y_value);
+        }
+
+        console.log("from chart" + labelData[0]);
+        console.log("from chart" + valueData[0]);
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: "line",
+
+          // The data for our dataset
+          data: {
+            labels: labelData,
+            datasets: [
+              {
+                label: "Total covid cases",
+                backgroundColor: "rgb(255, 99, 132)",
+                borderColor: "rgb(255, 255, 132)",
+                data: valueData,
+              },
+            ],
+          },
+
+          // Configuration options go here
+          options: {},
+        });
       }
     }
   } else {
