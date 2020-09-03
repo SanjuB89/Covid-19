@@ -1,6 +1,13 @@
+// document.getElementById("main-div").style.backgroundRepeat = "none";
 document.getElementById("picture-div").addEventListener("click", createButtons);
 
 function createButtons() {
+  document.getElementById("main-div").style.backgroundImage =
+    "url(covid19-img/background-img.jpg)";
+  document.getElementById("main-div").style.backgroundSize = "100%";
+  document.getElementById("main-div").style.backgroundRepeat = "repeat";
+  document.getElementById("main-div").style.transition = "3s";
+
   let target = document.getElementById("main-div");
   const myOuterDiv1 = document.createElement("div");
   const myOuterDiv2 = document.createElement("div");

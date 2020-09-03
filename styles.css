@@ -11,16 +11,20 @@
 body {
   background-image: url(covid19-img/document-background-img.gif);
 }
+
 #main-text {
   font-size: 30px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 #main-div {
-  background-image: url(covid19-img/background-img.jpg);
-  border: 1px solid blueviolet;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url(covid19-img/healing-mandala.png);
+  /* border: 1px solid blueviolet; */
   border-radius: 15px;
-  box-shadow: 2px 4px 10px 4px darkblue;
+  /* box-shadow: 2px 4px 10px 4px darkblue; */
   margin-top: 20px;
   margin-bottom: 20px;
 }
