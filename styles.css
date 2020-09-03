@@ -22,6 +22,7 @@ body {
   background-size: contain;
   background-position: center;
   background-image: url(covid19-img/healing-mandala.png);
+  opacity: 0.8;
   /* border: 1px solid blueviolet; */
   border-radius: 15px;
   /* box-shadow: 2px 4px 10px 4px darkblue; */
