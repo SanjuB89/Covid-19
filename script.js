@@ -1,4 +1,3 @@
-// document.getElementsByTagName("h3").style.color = "red";
 document.getElementById("picture-div").addEventListener("click", createButtons);
 
 function createButtons() {
@@ -8,11 +7,7 @@ function createButtons() {
   const myOuterDiv3 = document.createElement("div");
   const myOuterDiv4 = document.createElement("div");
   const myOuterDiv5 = document.createElement("div");
-  // console.log(target.children.length);
-  // console.log(target.contains(myOuterDiv1));
   if (target.childElementCount === 1) {
-    // console.log(target.children.length);
-    // console.log(target.contains(myOuterDiv1));
     // create button
     console.log("inside if");
     myOuterDiv1.style.display = "flex";
@@ -21,14 +16,10 @@ function createButtons() {
     myOuterDiv1.style.margin = "10px";
     // myOuterDiv1.style.border = "1px solid black";
     myOuterDiv1.style.padding = "5px";
-    //myOuterDiv1.setAttribute("src", "covid19-img/covid19-2.png");
     myOuterDiv1.style.position = "absolute";
     myOuterDiv1.style.top = "10px";
     myOuterDiv1.style.right = "10px";
     myOuterDiv1.setAttribute("class", "slide1");
-    // myOuterDiv1.flexDirection = "column"
-    // myOuterDiv1.style.animation = "slide";
-    //myOuterDiv1.setAttribute("class", "slide1");
     target.appendChild(myOuterDiv1);
 
     // document.getElementById("picture-div").style.border = "2px solid blue";
@@ -114,7 +105,6 @@ function createButtons() {
     myOuterDiv4.style.margin = "10px";
     // myOuterDiv4.style.border = "1px solid black";
     myOuterDiv4.style.padding = "5px";
-    // myOuterDiv4.setAttribute("src", "covid19-img/covid19-2.png");
     myOuterDiv4.style.position = "absolute";
     myOuterDiv4.style.bottom = "10px";
     myOuterDiv4.style.left = "10px";
@@ -146,7 +136,6 @@ function createButtons() {
     myOuterDiv5.style.margin = "10px";
     // myOuterDiv5.style.border = "1px solid black";
     myOuterDiv5.style.padding = "5px";
-    // myOuterDiv5.setAttribute("src", "covid19-img/covid19-2.png");
     myOuterDiv5.style.position = "absolute";
     myOuterDiv5.style.top = "10px";
     myOuterDiv5.setAttribute("class", "slide5");
@@ -210,8 +199,6 @@ function createButtons() {
       target.style.flexDirection = "row";
       target.style.transition = "2s";
       target.style.flexWrap = "wrap";
-      // target.style.height = "auto";
-      // target.style.justifyContent = "flex-start";
       target.style.alignItems = "flex-start";
 
       const breakFlex = document.createElement("div");
@@ -228,21 +215,17 @@ function createButtons() {
         target.style.height = "auto";
       }
 
-      //console.log(target.contains(document.getElementById("tableOutline")));
-
       //Process Table
       const currentElementId = event.target.getAttribute("id");
       let url = "";
       let country = "";
-      //console.log("i am clicked" + currentElementId);
-      //console.log(currentElementId);
+
       switch (currentElementId) {
         case "main-img1":
           break;
         case "menuTitle1":
         case "myOuterDiv1":
         case "subImage1":
-          // latestUpdate(currentElementId);
           url = "https://covid19-backend-2020.herokuapp.com/latest-status";
           axios.get(url).then((response) => {
             covidTable(response.data);
@@ -275,7 +258,6 @@ function createButtons() {
         case "menuTitle4":
         case "myOuterDiv4":
         case "subImage4":
-          // /prediction-by-country/:country
           country = prompt(
             "Enter country name (eg: 'us' for United States, 'np' for Nepal)"
           );
@@ -296,7 +278,6 @@ function createButtons() {
             covidTable([response.data]);
             console.log(response.data);
           });
-
           break;
       }
 
@@ -307,11 +288,6 @@ function createButtons() {
         if (tableData.childElementCount > 0) {
           tableData.innerHTML = "";
         }
-
-        //gives you the number of rows from list
-        console.log(list.length);
-        // gives you the numbe of column
-        console.log(Object.keys(list[0]).length);
 
         const tableDiv = document.createElement("div");
         tableDiv.setAttribute("id", "tableDiv");
@@ -335,12 +311,12 @@ function createButtons() {
         const keys = Object.keys(list[0]);
         const headerList = [];
         const regex_remove = /_/gi;
+
         //process keys into headers
         for (let index = 0; index < keys.length; index++) {
           var editedHeader = keys[index].replace(regex_remove, " ");
           headerList.push(editedHeader);
         }
-        console.log(headerList);
 
         for (let index = 0; index < headerList.length; index++) {
           const thKey = document.createElement("th");
@@ -348,32 +324,7 @@ function createButtons() {
           thKey.innerHTML = `${headerList[index]}`;
           row.appendChild(thKey);
         }
-        // --------------------------------------------------------------
-        // const thCountry = document.createElement("th");
-        // thCountry.setAttribute("scope", "col");
-        // thCountry.innerHTML = "Country";
-        // row.appendChild(thCountry);
 
-        // const thLastUpdate = document.createElement("th");
-        // thLastUpdate.setAttribute("scope", "col");
-        // thLastUpdate.innerHTML = "Last_Update";
-        // row.appendChild(thLastUpdate);
-
-        // const thCases = document.createElement("th");
-        // thCases.setAttribute("scope", "col");
-        // thCases.innerHTML = "Cases";
-        // row.appendChild(thCases);
-
-        // const thDeath = document.createElement("th");
-        // thDeath.setAttribute("scope", "col");
-        // thDeath.innerHTML = "Death";
-        // row.appendChild(thDeath);
-
-        // const thRecovered = document.createElement("th");
-        // thRecovered.setAttribute("scope", "col");
-        // thRecovered.innerHTML = "Recovered";
-        // row.appendChild(thRecovered);
-        // ----------------------------------------------------------------------
         const subDiv = document.createElement("div");
         document.getElementById("tableOutline").appendChild(subDiv);
 
@@ -399,8 +350,6 @@ function createButtons() {
           //console.log("outside for");
           console.log(Object.keys(list[i]).length);
 
-          //---------------------needs to be dynamic--------------------------->>
-          // const propertySize = Object.keys(list[i]).length;
           const valueList = Object.values(list[i]);
           console.log(valueList);
           for (let j = 0; j < valueList.length; j++) {
@@ -410,41 +359,12 @@ function createButtons() {
             tdData.innerHTML = `${valueList[j]}`;
             bRow.appendChild(tdData);
           }
-
-          // const tdCountry = document.createElement("td");
-          // tdCountry.setAttribute("scope", "col");
-          // tdCountry.innerHTML = `${list[i].country}`;
-          // bRow.appendChild(tdCountry);
-
-          // const tdLastUpdate = document.createElement("td");
-          // tdLastUpdate.setAttribute("scope", "col");
-          // tdLastUpdate.innerHTML = `${list[i].last_update}`;
-          // bRow.appendChild(tdLastUpdate);
-
-          // const tdCases = document.createElement("td");
-          // tdCases.setAttribute("scope", "col");
-          // tdCases.innerHTML = `${list[i].cases}`;
-          // bRow.appendChild(tdCases);
-
-          // const tdDeath = document.createElement("td");
-          // tdDeath.setAttribute("scope", "col");
-          // tdDeath.innerHTML = `${list[i].deaths}`;
-          // bRow.appendChild(tdDeath);
-
-          // const tdRecovered = document.createElement("td");
-          // tdRecovered.setAttribute("scope", "col");
-          // tdRecovered.innerHTML = `${list[i].recovered}`;
-          // bRow.appendChild(tdRecovered);
-          //------------------------------------------------------------<<
         }
       }
     }
   } else {
-    //const removeList = document.getElementById("main-div");
     console.log("I am here");
 
-    // document.getElementById("main-text").addEventListener("click", () => {
-    // location.reload(true);
     document.getElementById("menu1").removeAttribute("class", "slide1");
     document.getElementById("menu1").setAttribute("class", "slide1-reverse");
 
@@ -465,42 +385,5 @@ function createButtons() {
     function reloadPage() {
       location.reload(true);
     }
-
-    // });
-
-    //shrink the menu if clicked again
-    // myOuterDiv1
-    //createButtons();
-    // console.log(document.getElementById("main-img1"));
-    // event.target.parentElement.parentElement.parentElement.children[1];
-    // console.log(
-    //   event.target.parentElement.parentElement.parentElement.children[2]
-    // );
-    // console.log(
-    //   event.target.parentElement.parentElement.parentElement.children[3]
-    // );
-    // console.log(
-    //   event.target.parentElement.parentElement.parentElement.children[4]
-    // );
-    // // document
-    //   .getElementById(
-    //     event.target.parentElement.parentElement.parentElement.children[1].getAttribute(
-    //       "id"
-    //     )
-    //   )
-    //   .setAttribute("class", "rotate-counter-clockwise");
-
-    // event.target.parentElement.parentElement.parentElement.children[1].setAttribute(
-    //   "class",
-    //   "slide4"
-    // );
-
-    //myOuterDiv1.setAttribute("class", "slide1-reverse");
-
-    // console.log(removeList.children);
-    // removeList.removeChild(removeList.childNodes[1]);
-    // removeList.removeChild(removeList.childNodes[2]);
-    // removeList.removeChild(removeList.childNodes[3]);
-    // removeList.removeChild(removeList.childNodes[4]);
   }
 }
